@@ -6,204 +6,238 @@
     <title>Happy 17th Birthday Shagan!</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <style>
+        /* The Night Sky Background */
         body {
             font-family: 'Space Grotesk', sans-serif;
-            background-color: #0f172a;
+            background: linear-gradient(to bottom, #020111 10%, #20124d 50%, #000022 100%);
             color: #f8fafc;
-            scroll-behavior: smooth; 
-        }
-
-        .page-section {
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding-bottom: 50px;
+            overflow-x: hidden;
+        }
+
+        /* Twinkling Stars */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: radial-gradient(circle, #ffffff 1px, transparent 1px);
+            background-size: 70px 70px;
+            opacity: 0.3;
+            z-index: -1;
+            animation: twinkle 5s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            100% { opacity: 0.6; }
+        }
+
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.5rem;
+            color: #fde047;
+            text-shadow: 0 0 15px rgba(253, 224, 71, 0.8);
             text-align: center;
-            padding: 2rem;
-            position: relative;
-        }
-
-        /* Unique Gradients */
-        #intro { background: linear-gradient(135deg, #0f172a, #1e1b4b); }
-        #punjabi { background: linear-gradient(135deg, #451a03, #78350f); }
-        #french { background: linear-gradient(135deg, #064e3b, #065f46); }
-        #spanish { background: linear-gradient(135deg, #7f1d1d, #991b1b); }
-        #japanese { background: linear-gradient(135deg, #831843, #be185d); }
-        #celebration { background: linear-gradient(135deg, #312e81, #4c1d95); }
-
-        h1 { font-family: 'Press Start 2P', cursive; font-size: 2rem; color: #fde047; text-shadow: 3px 3px 0px #b45309; line-height: 1.5; margin-bottom: 20px;}
-        h2 { font-size: 2rem; color: #a78bfa; font-weight: bold; margin-bottom: 20px;}
-        
-        .original-text { font-size: 1.4rem; font-style: italic; line-height: 1.6; margin-bottom: 15px; }
-        .translated-text { font-size: 1.2rem; color: #fde047; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 15px;}
-        .iloveyou { font-weight: bold; color: #fca5a5; font-size: 1.5rem; margin-top: 15px; }
-
-        .next-btn {
-            position: absolute;
-            bottom: 30px;
-            color: white;
-            font-size: 1.2rem;
-            text-decoration: none;
-            opacity: 0.7;
-            transition: 0.3s;
-            background: rgba(255,255,255,0.1);
-            padding: 10px 20px;
-            border-radius: 30px;
-        }
-        .next-btn:hover { opacity: 1; color: #fde047; transform: translateY(3px); }
-
-        .pixel-art {
-            width: 200px;
-            animation: float 2s ease-in-out infinite;
+            margin-top: 30px;
             margin-bottom: 20px;
-            border-radius: 10px;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+        /* The Cloud Timer */
+        .cloud-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
         }
+
+        .cloud {
+            background: #ffffff;
+            border-radius: 50px;
+            padding: 20px 40px;
+            position: relative;
+            color: #1e1b4b;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+            border: 4px solid #c7d2fe;
+        }
+
+        /* Making it look more like a cloud */
+        .cloud::before, .cloud::after {
+            content: '';
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+            z-index: -1;
+        }
+        .cloud::before { width: 60px; height: 60px; top: -20px; left: 20px; }
+        .cloud::after { width: 80px; height: 80px; top: -30px; right: 20px; }
+
+        .timer-text { font-size: 1.5rem; font-family: 'Fredoka One', cursive; color: #4338ca; }
+
+        /* The "Old Approach" Translation Cards */
+        .wish-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h2 { font-size: 1.8rem; color: #a78bfa; font-weight: bold; margin-bottom: 15px;}
+        
+        .original-text { font-size: 1.3rem; font-style: italic; line-height: 1.6; margin-bottom: 15px; }
+        .translated-text { font-size: 1.2rem; color: #fde047; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 15px;}
+        .iloveyou { font-weight: bold; color: #fca5a5; font-size: 1.5rem; margin-top: 10px; font-family: 'Fredoka One', cursive;}
+
+        .minion-img {
+            width: 250px;
+            border-radius: 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 20px rgba(253, 224, 71, 0.5);
+        }
+
     </style>
 </head>
 <body>
 
-    <section id="intro" class="page-section">
-        <div class="container">
-            <h1>Hey Shagan 🎉</h1>
-            <p class="lead mt-4">Happy 17th Birthday! April 14th is here... and I made something special just for you.</p>
-        </div>
-        <a href="#punjabi" class="next-btn">Begin Journey 👇</a>
-    </section>
+    <div class="container">
+        <h1>✨ Happy 17th Birthday Shagan ✨</h1>
 
-    <section id="punjabi" class="page-section">
-        <div class="container">
-            <h2>Punjabi / ਪੰਜਾਬੀ 🇮🇳</h2>
-            <h3 class="mb-4 text-warning">ਜਨਮਦਿਨ ਮੁਬਾਰਕ!</h3>
-            <p class="original-text">ਤੇਰੀ ਮੁਸਕਾਨ ਨਾਲ ਖਿੜਦੀ ਹੈ ਮੇਰੀ ਦੁਨੀਆ, ਰੱਬ ਕਰੇ ਤੈਨੂੰ ਮਿਲੇ ਜੱਗ ਦੀ ਹਰ ਖੁਸ਼ੀ। ਤੂੰ ਮੇਰੀ ਜ਼ਿੰਦਗੀ ਦਾ ਸਭ ਤੋਂ ਸੋਹਣਾ ਹਿੱਸਾ ਹੈਂ।</p>
+        <div class="cloud-container">
+            <div class="cloud">
+                <div style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px;">Time until April 14th</div>
+                <div class="timer-text" id="countdown">Loading magic...</div>
+            </div>
+        </div>
+
+        <div class="wish-card">
+            <h2>Swedish 🇸🇪</h2>
+            <p class="original-text">Grattis på 17-årsdagen! Du är stjärnan som lyser upp min mörkaste natt.</p>
             
-            <button class="btn btn-warning mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#trans-punjabi">
+            <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#trans-swedish">
                 Translate ✨
             </button>
             
-            <div class="collapse" id="trans-punjabi">
+            <div class="collapse" id="trans-swedish">
                 <div class="translated-text">
-                    <strong>Happy 17th Birthday!</strong><br><br>
-                    "Your smile makes my world bloom, may God give you all the happiness in the world. You are the most beautiful part of my life."<br>
+                    "Happy 17th Birthday! You are the star that lights up my darkest night."<br>
                     <div class="iloveyou">I love you.</div>
                 </div>
             </div>
         </div>
-        <a href="#french" class="next-btn">Next 👇</a>
-    </section>
 
-    <section id="french" class="page-section">
-        <div class="container">
-            <h2>French / Français 🇫🇷</h2>
-            <h3 class="mb-4 text-warning">Joyeux Anniversaire!</h3>
-            <p class="original-text">Que cette journée soit aussi rayonnante et magnifique que ton âme. Tu es l'étoile qui guide mon cœur.</p>
+        <div class="wish-card">
+            <h2>French 🇫🇷</h2>
+            <p class="original-text">Joyeux 17e Anniversaire ! Ton sourire est la plus belle des magies dans mon monde.</p>
             
-            <button class="btn btn-warning mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#trans-french">
+            <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#trans-french">
                 Translate ✨
             </button>
             
             <div class="collapse" id="trans-french">
                 <div class="translated-text">
-                    <strong>Happy 17th Birthday!</strong><br><br>
-                    "May this day be as radiant and magnificent as your soul. You are the star that guides my heart."<br>
+                    "Happy 17th Birthday! Your smile is the most beautiful magic in my world."<br>
                     <div class="iloveyou">I love you.</div>
                 </div>
             </div>
         </div>
-        <a href="#spanish" class="next-btn">Next 👇</a>
-    </section>
 
-    <section id="spanish" class="page-section">
-        <div class="container">
-            <h2>Spanish / Español 🇪🇸</h2>
-            <h3 class="mb-4 text-warning">¡Feliz Cumpleaños!</h3>
-            <p class="original-text">Eres la poesía que mi corazón nunca supo cómo escribir. Que este nuevo año te traiga aventuras inolvidables a mi lado.</p>
+        <div class="wish-card">
+            <h2>Brazilian Portuguese 🇧🇷</h2>
+            <p class="original-text">Feliz Aniversário de 17 anos! Você traz cores vibrantes para o meu universo todos os dias.</p>
             
-            <button class="btn btn-warning mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#trans-spanish">
+            <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#trans-brazil">
                 Translate ✨
             </button>
             
-            <div class="collapse" id="trans-spanish">
+            <div class="collapse" id="trans-brazil">
                 <div class="translated-text">
-                    <strong>Happy 17th Birthday!</strong><br><br>
-                    "You are the poetry my heart never knew how to write. May this new year bring you unforgettable adventures by my side."<br>
+                    "Happy 17th Birthday! You bring vibrant colors to my universe every single day."<br>
                     <div class="iloveyou">I love you.</div>
                 </div>
             </div>
         </div>
-        <a href="#japanese" class="next-btn">Next 👇</a>
-    </section>
 
-    <section id="japanese" class="page-section">
-        <div class="container">
-            <h2>Japanese / 日本語 🇯🇵</h2>
-            <h3 class="mb-4 text-warning">お誕生日おめでとう!</h3>
-            <p class="original-text">君と出会えたことは僕の人生で最高の贈り物です。ずっと一緒に笑っていようね。</p>
+        <div class="wish-card">
+            <h2>Portuguese 🇵🇹</h2>
+            <p class="original-text">Feliz 17.º Aniversário! Que a tua vida seja sempre um mar de luz, aventuras e alegria ao meu lado.</p>
             
-            <button class="btn btn-warning mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#trans-japanese">
+            <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#trans-portugal">
                 Translate ✨
             </button>
             
-            <div class="collapse" id="trans-japanese">
+            <div class="collapse" id="trans-portugal">
                 <div class="translated-text">
-                    <strong>Happy 17th Birthday!</strong><br><br>
-                    "Meeting you is the greatest gift of my life. Let's keep laughing together forever."<br>
+                    "Happy 17th Birthday! May your life always be a sea of light, adventures, and joy by my side."<br>
                     <div class="iloveyou">I love you.</div>
                 </div>
             </div>
         </div>
-        <a href="#celebration" class="next-btn">Next 👇</a>
-    </section>
 
-    <section id="celebration" class="page-section">
-        <div class="container">
-            <h1 class="mb-4">🎮 Level 17 Unlocked!</h1>
-            
-            <img src="pixel-character.png" alt="Pixel Celebration" class="pixel-art">
-            
-            <div class="ratio ratio-16x9 mb-4 mx-auto" style="max-width: 500px; border: 3px solid #fde047; border-radius: 10px; overflow: hidden;">
-                <iframe src="https://www.youtube.com/embed/tWn2f7reueI" title="8-Bit Happy Birthday" allowfullscreen></iframe>
-            </div>
-
-            <button onclick="fireConfetti()" class="btn btn-warning btn-lg" style="font-family: 'Press Start 2P', cursive; font-size: 1rem;">
-                CLAIM REWARD ✨
-            </button>
+        <div class="text-center mt-5 mb-5">
+            <h3 style="color: #fde047; font-family: 'Fredoka One', cursive;">Initiating Celebration Sequence...</h3>
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3VxdnR2cDhveTZ5eWtkcnI1c2I4MzVqczB1NjYwZnBiNnpwczFvayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11sBLVxNs7v6WA/giphy.gif" alt="Minions Celebrating" class="minion-img">
         </div>
-    </section>
+
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        function fireConfetti() {
-            var duration = 3 * 1000;
-            var animationEnd = Date.now() + duration;
-            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-
-            function randomInRange(min, max) { return Math.random() * (max - min) + min; }
-
-            var interval = setInterval(function() {
-                var timeLeft = animationEnd - Date.now();
-                if (timeLeft <= 0) { return clearInterval(interval); }
-
-                var particleCount = 50 * (timeLeft / duration);
-                confetti(Object.assign({}, defaults, { particleCount,
-                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
-                }));
-                confetti(Object.assign({}, defaults, { particleCount,
-                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
-                }));
-            }, 250);
+        // --- 1. THE CLOUD TIMER LOGIC ---
+        // Set the date we're counting down to (April 14th of the current year)
+        const currentYear = new Date().getFullYear();
+        let bdayDate = new Date(`April 14, ${currentYear} 00:00:00`).getTime();
+        
+        // If April 14th has already passed this year, count down to next year
+        if (new Date().getTime() > bdayDate) {
+            bdayDate = new Date(`April 14, ${currentYear + 1} 00:00:00`).getTime();
         }
+
+        const countdownFunction = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = bdayDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "IT'S TIME! 🎉";
+            } else {
+                document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+            }
+        }, 1000);
+
+        // --- 2. THE FIREWORKS LOGIC ---
+        function randomInRange(min, max) { return Math.random() * (max - min) + min; }
+
+        // Launch a firework every 1.5 seconds automatically
+        setInterval(function() {
+            confetti({
+                particleCount: 80,
+                spread: 80,
+                origin: { 
+                    x: randomInRange(0.1, 0.9), 
+                    y: randomInRange(0.1, 0.4) // Keeps fireworks near the top/sky
+                },
+                colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#ffffff'],
+                startVelocity: 35,
+                gravity: 0.7,
+                ticks: 200,
+                shapes: ['circle']
+            });
+        }, 1500);
     </script>
 </body>
 </html>
